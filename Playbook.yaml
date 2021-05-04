@@ -5,11 +5,11 @@
   gather_facts: false
   connection: local
   vars:
-    vcenter_hostname: 10.20.4.56
-    vcenter_user: administrator@vsphere.local
-    vcenter_pass: "@peX123!"
-    esxhost: 10.20.4.55
-    datastore: R5_Vol_01
+    vcenter_hostname: IPADDR
+    vcenter_user: @vsphere.local
+    vcenter_pass: "PWD"
+    esxhost: IPADDR
+    datastore: Vol_01
     vmtemplate: Windows Server 2019 Template
     name: "newvm"
     notes: Ansible Test
@@ -22,7 +22,7 @@
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}"
         esxi_hostname: "{{ esxhost }}"
-        datacenter: Apex Test
+        datacenter: DC
         folder: Discovered virtual machine
         name: "{{ name }}"
         template: "{{ vmtemplate }}"
@@ -33,10 +33,10 @@
         networks:
         - name: VM Network
           type: static
-          ip: 10.20.4.58
-          netmask: 255.255.255.0
-          gateway: 10.20.4.1
-          dns_servers: 8.8.8.8
+          ip: IPADDR
+          netmask: NETMASK
+          gateway: GATEWAY
+          dns_servers: DNS
         hardware:
           memory_mb: "{{ vm_memory | default(1024) }}"
         wait_for_ip_address: True
